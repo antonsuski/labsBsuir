@@ -1,0 +1,3 @@
+﻿  lab6.cpp
+c:\docs\cpp\lab6\lab6\lab6.cpp(23): warning C4018: <=: несоответствие типов со знаком и без знака
+  lab6.vcxproj -> C:\Docs\cpp\lab6\Debug\lab6.exe
