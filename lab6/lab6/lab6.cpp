@@ -9,7 +9,7 @@ void var2();
 
 int main()
 {
-	var1();
+	var2();
 }
 
 void var1()
@@ -19,7 +19,7 @@ void var1()
 
 	gets_s(binarNumbersString);
 
-	for (int  counterBinarString = 0; counterBinarString <= strlen(binarNumbersString); counterBinarString++)
+	for (int counterBinarString = 0; counterBinarString <= strlen(binarNumbersString); counterBinarString++)
 	{
 		if (binarNumbersString[counterBinarString] != ' ')
 		{
@@ -30,7 +30,7 @@ void var1()
 		{
 			groupString[counterGroupString] = '\0';
 			counterGroupString = 0;
-
+			  
 			if (strlen(groupString) == 5)
 			{
 				conterOfGroups++;
@@ -42,14 +42,44 @@ void var1()
 
 void var2()
 {
-	char binarString[100], minBinarString[100];
-	int counterMinBinarString = 0;
-	
+	char binarString[100], minBinarString[100], mirrorMinBinarString[100];
+	int counterMinBinarString = 0, counterBinarString = 0;
+
 	cout << "Enter your binar string with out spaces" << endl;
 	gets_s(binarString);
 
-	for (int counterBinarString = 0; counterBinarString < strlen(binarString); counterBinarString++)
+	for (; counterBinarString < strlen(binarString); counterBinarString++)
 	{
-
+		if (binarString[counterBinarString - 1] == binarString[counterBinarString] || counterBinarString == 0)
+		{
+			minBinarString[counterMinBinarString] = binarString[counterMinBinarString];
+			counterMinBinarString++;
+		}
+		else
+		{
+			minBinarString[counterMinBinarString] = '\0';
+			counterMinBinarString = 0;
+			break;
+		}
 	}
+	for (; counterBinarString < strlen(binarString); counterBinarString++)
+	{
+		if (binarString[counterBinarString - 1] == binarString[counterBinarString] || 
+			binarString[counterBinarString + 1] == binarString[counterBinarString] )
+		{
+			mirrorMinBinarString[counterMinBinarString] = binarString[counterBinarString];
+			counterMinBinarString++;
+		}
+		if (binarString[counterBinarString - 1] != binarString[counterBinarString] ||
+			binarString[counterBinarString + 1] != binarString[counterBinarString])
+		{
+			mirrorMinBinarString[counterMinBinarString] = '\0';
+			if (strlen(mirrorMinBinarString) <= strlen(minBinarString))
+			{
+				strcpy_s(minBinarString, mirrorMinBinarString);
+			}
+			counterMinBinarString = 0;
+		}
+	}
+	puts(minBinarString);
 }
