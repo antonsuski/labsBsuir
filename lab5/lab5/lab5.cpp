@@ -13,6 +13,7 @@ void fillArrayByKeyboard(int ** integerArray, int rows, int cols);
 bool findPolendromInTheRow(int **integerArray, int yourRow, int cols);
 bool checkForAsceding(int **integerArray, int cols, int yourElementInRow, int yourElementInCols);
 bool checkForDesceding(int **integerArray, int yourElementInRow, int yourElementInCols);
+bool checkUniq(int **integerArray, int rows, int cols, int yourElementInRow, int yourElementInCols);
 void var1();
 void var2();
 void var3();
@@ -22,7 +23,7 @@ void var6();
 
 int main()
 {
-	void var5();
+	var6();
 }
 
 
@@ -127,6 +128,21 @@ bool checkForDesceding(int **integerArray, int yourElementInRow, int yourElement
 			&& yourElementInCols != counterColsLeft)
 		{
 			return false;
+		}
+	}
+	return true;
+}
+
+bool checkUniq(int **integerArray, int rows, int cols, int yourElementInRow, int yourElementInCols)
+{
+	for (int counterRows = 0; counterRows < rows; counterRows++)
+	{
+		for (int counterCols = 0; counterCols < cols; counterCols++)
+		{
+			if (integerArray[rows][cols] == integerArray[yourElementInRow][yourElementInCols])
+			{
+				return false;
+			}
 		}
 	}
 	return true;
@@ -283,6 +299,16 @@ void var6()
 		counterOfVariousElements{ 0 };
 	generateArray(integerArray, rows, cols);
 	fillArrayRandomValue(integerArray, rows, cols);
-
+	for (int counterRows = 0; counterRows < rows; counterRows++)
+	{
+		for (int counterCols = 0; counterCols < cols; counterCols++)
+		{
+			if (checkUniq(integerArray,rows,cols,counterRows,counterCols))
+			{
+				counterOfVariousElements++;
+			}
+		}
+	}
 	deleteArray(integerArray, rows, cols);
+	cout << counterOfVariousElements;
 }
