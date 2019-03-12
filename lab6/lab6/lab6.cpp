@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include <iostream>
 #include <string>
+#include <ctime>
 
 using namespace std;
 
@@ -9,10 +10,12 @@ void var2();
 void var3();
 void var4();
 void var5();
+void var6();
+void var7();
 
 int main()
 {
-	var5();
+	
 }
 
 void var1()
@@ -192,4 +195,31 @@ void var5()
 		}
 	}
 	cout << counterOfOne;
+}
+
+void var6()
+{
+	char string[2][100];
+
+	cout << "Enter your string" << endl;
+	gets_s(string[0]);
+
+	for (int counterStringFirst = 0,counterStringSecond = 0; counterStringFirst <strlen(string[0]); counterStringFirst++)
+	{
+		if (string[0][counterStringFirst] <= '0' || string[0][counterStringFirst] <= '9')
+		{
+			string[1][counterStringSecond] = string[0][counterStringFirst];
+			counterStringSecond++;
+		}
+		if (counterStringFirst + 1 == strlen(string[0]))
+		{
+			string[1][counterStringSecond] = '\0';
+		}
+	}
+	puts(string[1]);
+}
+
+void var7()
+{
+
 }
