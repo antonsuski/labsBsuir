@@ -5,6 +5,7 @@
 
 using namespace std;
 
+double sumStirng(char myString[]);
 void var1();
 void var2();
 void var3();
@@ -12,9 +13,17 @@ void var4();
 void var5();
 void var6();
 void var7();
+void var8();
+void var9();
 
 int main()
 {
+	
+}
+
+double sumStirng(char myString[],...)
+{
+	int counterString = 0;
 	
 }
 
@@ -220,6 +229,44 @@ void var6()
 }
 
 void var7()
+{
+	char myString[2][100];
+
+	cout << "Enter your string" << endl;
+	gets_s(myString[0]);
+
+	for (int counterStringFirst = 0, counterStringSecond = 0; counterStringFirst < strlen(myString[0]); counterStringFirst++)
+	{
+		if (myString[0][counterStringFirst] <= '0' || myString[0][counterStringFirst] <= '9' || myString[0][counterStringFirst] == '.')
+		{
+			myString[1][counterStringSecond] = myString[0][counterStringFirst];
+			counterStringSecond++;
+		}
+		else
+		{
+			myString[1][counterStringSecond] = '\0';
+			counterStringSecond = 0;
+			for (; counterStringSecond < strlen(myString[1]); counterStringSecond++)
+			{
+				if (myString[1][counterStringSecond]=='.')
+				{
+					puts(myString[1]);
+				}
+			}
+			counterStringSecond = 0;
+		}
+	}
+}
+
+void var8()
+{
+	char myString[2][100];
+
+	cout << "Enter your string" << endl;
+	gets_s(myString[0]);
+}
+
+void var9()
 {
 
 }

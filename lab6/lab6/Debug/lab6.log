@@ -1,11 +1,13 @@
 ﻿  lab6.cpp
-d:\labsbsuir\lab6\lab6\lab6.cpp(27): warning C4018: <=: несоответствие типов со знаком и без знака
-d:\labsbsuir\lab6\lab6\lab6.cpp(56): warning C4018: <: несоответствие типов со знаком и без знака
-d:\labsbsuir\lab6\lab6\lab6.cpp(70): warning C4018: <: несоответствие типов со знаком и без знака
-d:\labsbsuir\lab6\lab6\lab6.cpp(100): warning C4018: <: несоответствие типов со знаком и без знака
-d:\labsbsuir\lab6\lab6\lab6.cpp(114): warning C4018: <: несоответствие типов со знаком и без знака
-d:\labsbsuir\lab6\lab6\lab6.cpp(144): warning C4018: <: несоответствие типов со знаком и без знака
-d:\labsbsuir\lab6\lab6\lab6.cpp(173): warning C4018: <=: несоответствие типов со знаком и без знака
-d:\labsbsuir\lab6\lab6\lab6.cpp(186): warning C4018: <: несоответствие типов со знаком и без знака
-d:\labsbsuir\lab6\lab6\lab6.cpp(206): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(28): warning C4018: <=: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(57): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(71): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(101): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(115): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(145): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(174): warning C4018: <=: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(187): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(207): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(229): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(240): warning C4018: <: несоответствие типов со знаком и без знака
   lab6.vcxproj -> D:\labsBsuir\lab6\Debug\lab6.exe
