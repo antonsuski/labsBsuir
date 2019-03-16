@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include <math.h>
 
 using namespace std;
 
@@ -18,13 +19,41 @@ void var9();
 
 int main()
 {
-	
+	char str[] = "4.5";
+	cout << sumStirng(str);
 }
 
-double sumStirng(char myString[],...)
+double sumStirng(char myString[])
 {
-	int counterString = 0;
-	
+	double sum = 0;
+	int checkFloat = 0;
+	int counterExponenta = 1;
+
+	for (int counterString = 0; counterString < strlen(myString); counterString++)
+	{
+		if (myString[counterString] == '.')
+		{
+			checkFloat = 1;
+			continue;
+		}
+		switch (checkFloat)
+		{
+		case(0): 
+			{
+			sum += (double)myString[counterString] - 48;
+				break;
+			}
+		case(1):
+		{
+			sum += ((double)myString[counterString] - 48) / pow(10.,counterExponenta);
+			counterExponenta++;
+			break;
+		}
+		default:
+			break;
+		}
+	}
+	return sum;
 }
 
 void var1()
@@ -268,5 +297,37 @@ void var8()
 
 void var9()
 {
+	char myString[100], groupString[100];
+	int size = 0, counterGroupString = 0, counterArray = 0;
 
+	cout << "Enter your string" << endl;
+	gets_s(myString);
+	for (int counterString = 0; counterString <= strlen(myString); counterString++)
+	{
+		if (myString[counterString] == ' ' || myString[counterString] == '\0')
+		{
+			size++;
+		}
+	}
+	double * ptrArray = new double[size];
+	for (int counterString = 0; counterString < strlen(myString); counterString++)
+	{
+		if (myString[counterString] != ' ' || myString[counterString] != '\0')
+		{
+			groupString[counterGroupString] = myString[counterString];
+			counterGroupString++;
+		}
+		else
+		{
+			groupString[counterGroupString] = '\0';
+			counterGroupString = 0;
+			ptrArray[counterArray]=sumStirng(groupString);
+			counterArray++;
+		}
+	}
+	for (counterArray = 0; counterArray < size; counterArray++)
+	{
+
+	}
+	delete[] ptrArray;
 }
