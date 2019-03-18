@@ -7,22 +7,26 @@ using namespace std;
 void printArray(int **arr, int rows, int colons);
 void generateArray(int **& integerArray, int rows, int cols);
 void deleteArray(int ** integerArray, int rows, int cols);
-void fillArrayRandomValue(int ** integerArray, int rows, int cols);
+void fillArrayRandomValue(int ** integerArray, int rows, int cols,  int div);
 void fillArrayBinar(int ** integerArray, int rows, int cols);
 void fillArrayByKeyboard(int ** integerArray, int rows, int cols);
+void swapCols(int **integerArray, int counterRows, int counterBack, int cols);
 bool findPolendromInTheRow(int **integerArray, int yourRow, int cols);
 bool checkForAsceding(int **integerArray, int cols, int yourElementInRow, int yourElementInCols);
 bool checkForDesceding(int **integerArray, int yourElementInRow, int yourElementInCols);
+bool checkUniq(int **integerArray, int yourElementInRow, int yourElementInCols);
 void var1();
 void var2();
 void var3();
 void var4();
 void var5();
 void var6();
+void var7();
+
 
 int main()
 {
-	void var5();
+	var7();
 }
 
 
@@ -56,14 +60,14 @@ void deleteArray(int ** integerArray, int rows, int cols)
 	delete[] integerArray;
 }
 
-void fillArrayRandomValue(int ** integerArray, int rows, int cols)
+void fillArrayRandomValue(int ** integerArray, int rows, int cols, int div)
 {
 	srand(time(0));
 	for (int counterRows = 0; counterRows < rows; counterRows++)
 	{
 		for (int counterCols = 0; counterCols < cols; counterCols++)
 		{
-			integerArray[counterRows][counterCols] = rand() % 10;
+			integerArray[counterRows][counterCols] = rand() % div;
 		}
 	}
 }
@@ -89,6 +93,18 @@ void fillArrayByKeyboard(int ** integerArray, int rows, int cols)
 			cout << "enter your element of array " << "[" << counterRows << "]" << "[" << counterCols << "] ";
 			cin >> integerArray[counterRows][counterCols];
 		}
+	}
+}
+
+void swapCols(int **integerArray, int counterRows, int counterBack, int cols)
+{
+
+	for (int counterCols = 0; counterCols < cols; counterCols++)
+	{
+		int ptrTamporaryArray{ 0 };
+		ptrTamporaryArray = integerArray[counterRows][counterCols];
+		integerArray[counterRows][counterCols] = integerArray[counterBack][counterCols];
+		integerArray[counterBack][counterCols] = ptrTamporaryArray;
 	}
 }
 
@@ -127,6 +143,22 @@ bool checkForDesceding(int **integerArray, int yourElementInRow, int yourElement
 			&& yourElementInCols != counterColsLeft)
 		{
 			return false;
+		}
+	}
+	return true;
+}
+
+bool checkUniq(int **integerArray, int yourElementInRow, int yourElementInCols)
+{
+	for (int counterRows = yourElementInRow; 0 <= counterRows; counterRows--)
+	{
+		for (int counterCols = yourElementInCols; 0 <= counterCols; counterCols--)
+		{
+			if (integerArray[yourElementInRow][yourElementInCols] == integerArray[counterRows][counterCols] &&
+				&integerArray[yourElementInRow][yourElementInCols] != &integerArray[counterRows][counterCols])
+			{
+				return false;
+			}
 		}
 	}
 	return true;
@@ -175,7 +207,7 @@ void var2()
 	bool isArraySort = true;
 
 	generateArray(integerArray, rows, cols);
-	fillArrayRandomValue(integerArray, rows, cols);
+	fillArrayRandomValue(integerArray, rows, cols, 10);
 	printArray(integerArray, rows, cols);
 	cout << "user choise " << userChoiseRow + 1 << " " << userChoiseCols + 1 << endl;
 
@@ -229,7 +261,7 @@ void var4()
 		rowAmount{ 0 };
 
 	generateArray(integerArray, rows, cols);
-	fillArrayRandomValue(integerArray, rows, cols);
+	fillArrayRandomValue(integerArray, rows, cols, 10);
 	printArray(integerArray, rows, cols);
 	for (int counterCols = 0; counterCols < cols; counterCols++)
 	{
@@ -278,11 +310,48 @@ void var5()
 void var6()
 {
 	int ** integerArray,
-		rows{ 3 },
-		cols{ 3 },
+		rows{ 2 },
+		cols{ 2 },
 		counterOfVariousElements{ 0 };
-	generateArray(integerArray, rows, cols);
-	fillArrayRandomValue(integerArray, rows, cols);
 
+	generateArray(integerArray, rows, cols);
+	fillArrayRandomValue(integerArray, rows, cols, 4);
+
+	for (int counterRows = 0; counterRows < rows; counterRows++)
+	{
+		for (int counterCols = 0; counterCols < cols; counterCols++)
+		{
+			if (checkUniq(integerArray,counterRows,counterCols))
+			{
+				counterOfVariousElements++;
+			}
+		}
+	}
+	printArray(integerArray, rows, cols);
+	deleteArray(integerArray, rows, cols);
+	cout << counterOfVariousElements;
+}
+
+void var7()
+{
+	int ** integerArray,
+		rows{ 3 },
+		cols{ 3 };
+
+	generateArray(integerArray, rows, cols);
+	fillArrayRandomValue(integerArray, rows, cols, 3);
+	printArray(integerArray, rows, cols);
+	for (int counterRows = 0; counterRows < rows; counterRows++)
+	{
+		for (int counterBack = counterRows; counterBack < rows - counterRows; counterBack++)
+		{
+			if (integerArray[counterRows][0] > integerArray[counterBack][0])
+			{
+				swapCols(integerArray, counterRows, counterBack, cols);
+			}
+		}
+	}
+	cout << endl;
+	printArray(integerArray, rows, cols);
 	deleteArray(integerArray, rows, cols);
 }
