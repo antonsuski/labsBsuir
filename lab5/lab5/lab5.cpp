@@ -11,10 +11,13 @@ void fillArrayRandomValue(int ** integerArray, int rows, int cols,  int div);
 void fillArrayBinar(int ** integerArray, int rows, int cols);
 void fillArrayByKeyboard(int ** integerArray, int rows, int cols);
 void swapCols(int **integerArray, int counterRows, int counterBack, int cols);
+void swapRows(int **integerArray, int counterRows, int counterBack, int rows);
 bool findPolendromInTheRow(int **integerArray, int yourRow, int cols);
 bool checkForAsceding(int **integerArray, int cols, int yourElementInRow, int yourElementInCols);
 bool checkForDesceding(int **integerArray, int yourElementInRow, int yourElementInCols);
 bool checkUniq(int **integerArray, int yourElementInRow, int yourElementInCols);
+double sumOfRow(int **arr, int rows, int colons);
+double foundMinInRow(int **arr, int rows, int colons);
 void var1();
 void var2();
 void var3();
@@ -22,11 +25,14 @@ void var4();
 void var5();
 void var6();
 void var7();
+void var8();
+void var9();
+void var10();
 
 
 int main()
 {
-	var7();
+	var9();
 }
 
 
@@ -108,6 +114,17 @@ void swapCols(int **integerArray, int counterRows, int counterBack, int cols)
 	}
 }
 
+void swapRows(int **integerArray, int counterRows, int counterBack, int rows)
+{
+	for (int counterRow = 0; counterRow < rows; counterRow++)
+	{
+		int ptrTamporaryArray{ 0 };
+		ptrTamporaryArray = integerArray[counterRow][counterRows];
+		integerArray[counterRow][counterRows] = integerArray[counterRow][counterBack];
+		integerArray[counterRow][counterBack] = ptrTamporaryArray;
+	}
+}
+
 bool findPolendromInTheRow(int **integerArray, int usersChoiceRow, int cols)
 {
 	for (int counterCols = 0; counterCols < int(cols / 2); counterCols++)
@@ -162,6 +179,29 @@ bool checkUniq(int **integerArray, int yourElementInRow, int yourElementInCols)
 		}
 	}
 	return true;
+}
+
+double sumOfRow(int **arr, int rows, int colons)
+{
+	double sum = 0;
+	for (int counterColons = 0; counterColons < colons; counterColons++)
+	{
+		sum += arr[rows][counterColons];
+	}
+	return sum;
+}
+
+double foundMinInRow(int **arr, int rows, int colons)
+{
+	double min = arr[0][0];
+	for (int counterRows = 0; counterRows < rows; counterRows++)
+	{
+		if (arr[counterRows][colons] <= min)
+		{
+			min = arr[counterRows][colons];
+		}
+	}
+	return min;
 }
 
 void var1()
@@ -341,9 +381,10 @@ void var7()
 	generateArray(integerArray, rows, cols);
 	fillArrayRandomValue(integerArray, rows, cols, 3);
 	printArray(integerArray, rows, cols);
+
 	for (int counterRows = 0; counterRows < rows; counterRows++)
 	{
-		for (int counterBack = counterRows; counterBack < rows - counterRows; counterBack++)
+		for (int counterBack = counterRows; counterBack < rows; counterBack++)
 		{
 			if (integerArray[counterRows][0] > integerArray[counterBack][0])
 			{
@@ -354,4 +395,59 @@ void var7()
 	cout << endl;
 	printArray(integerArray, rows, cols);
 	deleteArray(integerArray, rows, cols);
+}
+
+void var8()
+{
+	int ** integerArray,
+		rows{ 3 },
+		cols{ 3 };
+
+	generateArray(integerArray, rows, cols);
+	fillArrayRandomValue(integerArray, rows, cols, 2);
+	printArray(integerArray, rows, cols);
+
+	for (int counterRows = 0; counterRows < rows; counterRows++)
+	{
+		for (int counterBack = counterRows; counterBack < rows; counterBack++)
+		{
+			if (sumOfRow(integerArray,counterRows,cols) > sumOfRow(integerArray, counterBack, cols))
+			{
+				swapCols(integerArray, counterRows, counterBack, cols);
+			}
+		}
+	}
+	cout << endl;
+	printArray(integerArray, rows, cols);
+	deleteArray(integerArray, rows, cols);
+}
+
+void var9()
+{
+	int ** integerArray,
+		rows{ 3 },
+		cols{ 3 };
+
+	generateArray(integerArray, rows, cols);
+	fillArrayRandomValue(integerArray, rows, cols, 9);
+	printArray(integerArray, rows, cols);
+
+	for (int counterRows = 0; counterRows < rows; counterRows++)
+	{
+		for (int counterBack = counterRows; counterBack < rows; counterBack++)
+		{
+			if (foundMinInRow(integerArray,cols,counterRows) > foundMinInRow(integerArray,cols,counterBack))
+			{
+				swapRows(integerArray, counterRows, counterBack, cols);
+			}
+		}
+	}
+	cout << endl;
+	printArray(integerArray, rows, cols);
+	deleteArray(integerArray, rows, cols);
+}
+
+void var10() 
+{
+
 }

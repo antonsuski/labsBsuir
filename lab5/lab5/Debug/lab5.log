@@ -1,7 +1,7 @@
 ﻿  lab5.cpp
-f:\labsbsuir\lab5\lab5\lab5.cpp(65): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-f:\labsbsuir\lab5\lab5\lab5.cpp(77): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-f:\labsbsuir\lab5\lab5\lab5.cpp(169): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-f:\labsbsuir\lab5\lab5\lab5.cpp(199): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-f:\labsbsuir\lab5\lab5\lab5.cpp(236): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+f:\labsbsuir\lab5\lab5\lab5.cpp(70): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+f:\labsbsuir\lab5\lab5\lab5.cpp(82): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+f:\labsbsuir\lab5\lab5\lab5.cpp(208): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+f:\labsbsuir\lab5\lab5\lab5.cpp(238): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+f:\labsbsuir\lab5\lab5\lab5.cpp(275): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
   lab5.vcxproj -> F:\labsBsuir\lab5\Debug\lab5.exe
