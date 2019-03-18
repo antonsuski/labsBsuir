@@ -1,0 +1,66 @@
+[33mcommit 7060f5629b6220c2eee40c89358e6115e7f36261[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Anton Syski <antonsyski@gmail.com>
+Date:   Sat Mar 16 10:41:50 2019 +0300
+
+    add var9, var8 dosen't do
+
+[33mcommit c17a42c77bda2913b0796d502958f836273f37f7[m
+Author: Anton Syski <antonsyski@gmail.com>
+Date:   Wed Mar 13 19:39:48 2019 +0300
+
+    add some change
+
+[33mcommit 3023f0a39549e8cac0035081c280ad42c276221b[m
+Author: Anton Syski <antonsyski@gmail.com>
+Date:   Tue Mar 12 18:47:28 2019 +0300
+
+    add var6
+
+[33mcommit 4de015ed5ce3317d3c22f482f56d0778af1a05d5[m
+Author: Anton Syski <antonsyski@gmail.com>
+Date:   Tue Mar 12 18:20:33 2019 +0300
+
+    add lab6, var 6
+
+[33mcommit 1116ab967e5101b25c11695945aabcc116faa089[m
+Author: Anton Syski <antonsyski@gmail.com>
+Date:   Tue Mar 12 14:38:56 2019 +0300
+
+    add ~~var5
+
+[33mcommit 8c571e3980474447fffdc046f3b57c5c78169f0f[m
+Author: Anton Syski <antonsyski@gmail.com>
+Date:   Mon Mar 11 15:59:56 2019 +0300
+
+    add chages to lab6 var2
+
+[33mcommit ac749ab41c8e6992012f854fa12fba298cc2a01c[m
+Merge: 46e1890 37bf5aa
+Author: Anton Suskii <antonsyski@mail.com>
+Date:   Sun Mar 10 19:45:55 2019 +0300
+
+    Merge branch 'master' of https://github.com/antonsuski/labsBsuir
+
+[33mcommit 37bf5aabd8a2bfb3ac3e8bea502832bccf91a7f2[m
+Author: Anton Syski <antonsyski@gmail.com>
+Date:   Sun Mar 10 19:44:04 2019 +0300
+
+    add var1 to lab 6
+
+[33mcommit 46e18906dfc207c79fe069794c9009f339dc9517[m
+Author: Anton Suskii <antonsyski@mail.com>
+Date:   Sun Mar 10 18:31:00 2019 +0300
+
+    add var5
+
+[33mcommit 4c53e69c8a00e82bcbda74fc40f59be52275529d[m
+Author: Anton Syski <antonsyski@gmail.com>
+Date:   Fri Feb 22 19:25:57 2019 +0300
+
+    first commit
+
+[33mcommit 972311e8ae4993c1b703f1735ab2d873bffa484e[m
+Author: antonsuski <43786966+antonsuski@users.noreply.github.com>
+Date:   Fri Feb 22 19:07:05 2019 +0300
+
+    Initial commit
