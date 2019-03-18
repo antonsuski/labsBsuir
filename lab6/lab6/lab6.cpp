@@ -7,6 +7,7 @@
 using namespace std;
 
 double sumStirng(char myString[]);
+void sortArray(double ptr[], int size);
 void var1();
 void var2();
 void var3();
@@ -19,8 +20,7 @@ void var9();
 
 int main()
 {
-	char str[] = "4.5";
-	cout << sumStirng(str);
+	var9();
 }
 
 double sumStirng(char myString[])
@@ -54,6 +54,20 @@ double sumStirng(char myString[])
 		}
 	}
 	return sum;
+}
+
+void sortArray(double ptr[], int size)
+{
+	for (int  counterArray = 0; counterArray < size; counterArray++)
+	{
+		for (int counterBack = counterArray; counterBack < size; counterBack++)
+		{
+			if (ptr[counterArray] > ptr[counterBack])
+			{
+				swap(ptr[counterArray], ptr[counterBack]);
+			}
+		}
+	}
 }
 
 void var1()
@@ -289,6 +303,7 @@ void var7()
 
 void var8()
 {
+	// не понятное задание
 	char myString[2][100];
 
 	cout << "Enter your string" << endl;
@@ -325,9 +340,13 @@ void var9()
 			counterArray++;
 		}
 	}
+	cout << endl;
+
 	for (counterArray = 0; counterArray < size; counterArray++)
 	{
-
+		cout << ptrArray[counterArray];
 	}
+	cout << endl;
+
 	delete[] ptrArray;
 }

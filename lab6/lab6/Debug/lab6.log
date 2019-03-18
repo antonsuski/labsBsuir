@@ -1,14 +1,16 @@
 ﻿  lab6.cpp
 d:\labsbsuir\lab6\lab6\lab6.cpp(32): warning C4018: <: несоответствие типов со знаком и без знака
-d:\labsbsuir\lab6\lab6\lab6.cpp(66): warning C4018: <=: несоответствие типов со знаком и без знака
-d:\labsbsuir\lab6\lab6\lab6.cpp(95): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(80): warning C4018: <=: несоответствие типов со знаком и без знака
 d:\labsbsuir\lab6\lab6\lab6.cpp(109): warning C4018: <: несоответствие типов со знаком и без знака
-d:\labsbsuir\lab6\lab6\lab6.cpp(139): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(123): warning C4018: <: несоответствие типов со знаком и без знака
 d:\labsbsuir\lab6\lab6\lab6.cpp(153): warning C4018: <: несоответствие типов со знаком и без знака
-d:\labsbsuir\lab6\lab6\lab6.cpp(183): warning C4018: <: несоответствие типов со знаком и без знака
-d:\labsbsuir\lab6\lab6\lab6.cpp(212): warning C4018: <=: несоответствие типов со знаком и без знака
-d:\labsbsuir\lab6\lab6\lab6.cpp(225): warning C4018: <: несоответствие типов со знаком и без знака
-d:\labsbsuir\lab6\lab6\lab6.cpp(245): warning C4018: <: несоответствие типов со знаком и без знака
-d:\labsbsuir\lab6\lab6\lab6.cpp(267): warning C4018: <: несоответствие типов со знаком и без знака
-d:\labsbsuir\lab6\lab6\lab6.cpp(278): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(167): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(197): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(226): warning C4018: <=: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(239): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(259): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(281): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(292): warning C4018: <: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(320): warning C4018: <=: несоответствие типов со знаком и без знака
+d:\labsbsuir\lab6\lab6\lab6.cpp(328): warning C4018: <: несоответствие типов со знаком и без знака
   lab6.vcxproj -> D:\labsBsuir\lab6\Debug\lab6.exe
