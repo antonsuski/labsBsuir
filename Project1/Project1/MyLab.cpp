@@ -28,8 +28,8 @@ public:
 
 	Date()
 	{
-		month = 01;
-		day = 01;
+		month = 03;
+		day = 30;
 		yer = 2019;
 	}
 
@@ -44,9 +44,11 @@ public:
 		yer = (((int)date[6] - 48)*1000) + (((int)date[7] - 48)*100) + (((int)date[8] - 48)*10) + ((int)date[9] - 48);
 	}
 
-	Date()
+	Date(const Date &other)
 	{
-
+		this->yer = other.yer;
+		this->month = other.month;
+		this->day = other.day;
 	}
 
 	int getYer()
@@ -66,7 +68,22 @@ public:
 
 	void print() 
 	{
-		cout << "Yer " << yer << "\nMonth " << month/10 << month%10 << "\nDay " << day/10 << day%10 << endl;
+		cout << "Yer " << yer << "\nMonth " << month / 10 << month % 10 << "\nDay " << day / 10 << day % 10 << endl << endl;
+	}
+
+	void setParametrsByConsol()
+	{
+		char date[11];
+		cout << "Enter your date in format like this: 12.31.2049" << endl;
+		gets_s(date);
+
+		if ((int)date[0] - 48 > 1 || (int)date[3] - 48 > 3 || strlen(date) > 10)
+		{
+			cout << "Uncorrect date";
+		}
+		month = ((int)date[0] - 48) * 10 + ((int)date[1] - 48);
+		day = (((int)date[3] - 48) * 10) + ((int)date[4] - 48);
+		yer = (((int)date[6] - 48) * 1000) + (((int)date[7] - 48) * 100) + (((int)date[8] - 48) * 10) + ((int)date[9] - 48);
 	}
 };
 
@@ -74,5 +91,11 @@ public:
 int main()
 {
 	Date a("01.12.2019");
+	Date b;
+	Date c(a);
 	a.print();
+	b.print();
+	c.print();
+	c.setParametrsByConsol();
+	c.print();
 }
