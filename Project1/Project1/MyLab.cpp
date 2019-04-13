@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 
 using namespace std;
 
@@ -85,17 +84,57 @@ public:
 		day = (((int)date[3] - 48) * 10) + ((int)date[4] - 48);
 		yer = (((int)date[6] - 48) * 1000) + (((int)date[7] - 48) * 100) + (((int)date[8] - 48) * 10) + ((int)date[9] - 48);
 	}
+
+	Data &  operator = (const Date & other)
+	{
+		this->day = other.day;
+		this->month = other.month;
+		this->yer = other.yer;
+		return *this;
+	}
+
+	//int operator + (const Date & other)
+	//{
+	//	if (other.month % 2 == 1)
+	//	{
+	//		return (this->day + other.day)%32
+	//	}
+	//}
+
+	bool operator == (const Date & other)
+	{
+		return this->day == other.day && this->month == other.month && this->yer == other.yer;
+	}
+
+	bool operator != (const Date & other)
+	{
+		return !(this->day == other.day && this->month == other.month && this->yer == other.yer);
+	}
+
+	bool operator  > (const Date & other)
+	{
+		this->yer > other.yer ? return 1 : (this->month > other.yer?return 1:(this->day > other.day?return 1:0))
+	}
+
+	bool operator  < (const Date & other)
+	{
+		this->yer > other.yer ? return !1 : !(this->month > other.yer ? return 1 : (this->day > other.day ? return 1 : 0))
+	}
+
+	bool operator  >= (const Date & other)
+	{
+		this->yer >= other.yer ? return 1 : (this->month >= other.yer ? return 1 : (this->day >= other.day ? return 1 : 0))
+	}
+
+	bool operator  <= (const Date & other)
+	{
+		this->yer <= other.yer ? return 1 : (this->month <= other.yer ? return 1 : (this->day <= other.day ? return 1 : 0))
+	}
 };
 
 
 int main()
 {
 	Date a("01.12.2019");
-	Date b;
-	Date c(a);
-	a.print();
-	b.print();
-	c.print();
-	c.setParametrsByConsol();
-	c.print();
+	Date b("02.12.2019");
 }
