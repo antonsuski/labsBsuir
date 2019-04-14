@@ -85,7 +85,7 @@ public:
 		yer = (((int)date[6] - 48) * 1000) + (((int)date[7] - 48) * 100) + (((int)date[8] - 48) * 10) + ((int)date[9] - 48);
 	}
 
-	Data &  operator = (const Date & other)
+	Date & operator = (const Date & other)
 	{
 		this->day = other.day;
 		this->month = other.month;
@@ -93,13 +93,18 @@ public:
 		return *this;
 	}
 
-	//int operator + (const Date & other)
-	//{
-	//	if (other.month % 2 == 1)
-	//	{
-	//		return (this->day + other.day)%32
-	//	}
-	//}
+	Date operator + (const Date & other)
+	{
+		Date temp;
+		if (this->month % 2 == 1)
+		{
+			temp.day = (this->day + other.day) % 31;
+		}
+		else
+		{
+
+		}
+	}
 
 	bool operator == (const Date & other)
 	{
@@ -111,30 +116,51 @@ public:
 		return !(this->day == other.day && this->month == other.month && this->yer == other.yer);
 	}
 
+	//bool operator > (const Date & other)
+	//{
+	//	this->yer > other.yer ?  true:
+	//}
+
+	//bool operator > (const Date & other)
+	//{
+	//	if (this->yer > other.yer)
+	//	{
+	//		return true;
+	//	}
+	//	if (this->month > other.yer)
+	//	{
+	//		return true;
+	//	}
+	//	if (this->day > other.day)
+	//	{
+	//		return true;
+	//	}
+	//	return false;
+	//}
 	bool operator  > (const Date & other)
 	{
-		this->yer > other.yer ? return 1 : (this->month > other.yer?return 1:(this->day > other.day?return 1:0))
+		return this->yer > other.yer ? 1 : (this->month > other.yer ? 1 : (this->day > other.day ? 1 : 0));
 	}
-
-	bool operator  < (const Date & other)
-	{
-		this->yer > other.yer ? return !1 : !(this->month > other.yer ? return 1 : (this->day > other.day ? return 1 : 0))
-	}
-
-	bool operator  >= (const Date & other)
-	{
-		this->yer >= other.yer ? return 1 : (this->month >= other.yer ? return 1 : (this->day >= other.day ? return 1 : 0))
-	}
-
-	bool operator  <= (const Date & other)
-	{
-		this->yer <= other.yer ? return 1 : (this->month <= other.yer ? return 1 : (this->day <= other.day ? return 1 : 0))
-	}
+	//bool operator  < (const Date & other)
+	//{
+	//	this->yer > other.yer ? return !1 : !(this->month > other.yer ? return 1 : (this->day > other.day ? return 1 : 0))
+	//}
+	//bool operator  >= (const  Date & other)
+	//{
+	//	this->yer >= other.yer ? return 1 : (this->month >= other.yer ? return 1 : (this->day >= other.day ? return 1 : 0))
+	//}
+	//bool operator  <= (const Date & other)
+	//{
+	//	this->yer <= other.yer ? return 1 : (this->month <= other.yer ? return 1 : (this->day <= other.day ? return 1 : 0))
+	//}
 };
 
 
 int main()
 {
-	Date a("01.12.2019");
+	Date a("03.12.2019");
 	Date b("02.12.2019");
+	bool c = a > b;
+	cout << c;
+	return 0;
 }
