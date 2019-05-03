@@ -27,19 +27,19 @@ public:
 
 	Date()
 	{	
-		day = 30;
+		day = 31;
 		month = 03;
 		yer = 2019;
 	}
 
 	Date(const char date[11])
 	{
-		if ((int)date[0] - 48 > 1 || (int)date[3] - 48 > 3 || strlen(date) > 10)
+		if ((int)date[0] - 48 > 3 || (int)date[3] - 48 > 1 || strlen(date) > 10)
 		{
-			cout << "Uncorrect date";
+			cout << "Uncorrect date\n";
 		}
-		month = ((int)date[0] - 48)*10 + ((int)date[1] - 48);
-		day = (((int)date[3] - 48) * 10) + ((int)date[4] - 48);
+		month = ((int)date[3] - 48) * 10 + ((int)date[1] - 48);
+		day = (((int)date[0] - 48) * 10) + ((int)date[4] - 48);
 		yer = (((int)date[6] - 48)*1000) + (((int)date[7] - 48)*100) + (((int)date[8] - 48)*10) + ((int)date[9] - 48);
 	}
 
@@ -78,10 +78,10 @@ public:
 
 		if ((int)date[0] - 48 > 1 || (int)date[3] - 48 > 3 || strlen(date) > 10)
 		{
-			cout << "Uncorrect date";
+			cout << "Uncorrect date\n";
 		}
-		month = ((int)date[0] - 48) * 10 + ((int)date[1] - 48);
-		day = (((int)date[3] - 48) * 10) + ((int)date[4] - 48);
+		month = ((int)date[3] - 48) * 10 + ((int)date[1] - 48);
+		day = (((int)date[0] - 48) * 10) + ((int)date[4] - 48);
 		yer = (((int)date[6] - 48) * 1000) + (((int)date[7] - 48) * 100) + (((int)date[8] - 48) * 10) + ((int)date[9] - 48);
 	}
 
@@ -95,39 +95,76 @@ public:
 
 	Date & operator + (const Date & other)
 	{
-
 		if ((this->month == 2) && (this->yer % 400 == 0) && (this->yer % 4 == 0))
 		{
 			this->day = +other.day;
 			this->month += this->day / 30;
+			this->day %= 30;
 			this->yer += this->month / 13;
-			this->month /= 13;
-			this->day /= 30;
+			this->month %= 13;
 		}
 		else if ((this->month == 2))
 		{
 			this->day = +other.day;
 			this->month += this->day / 29;
+			this->day %= 29;
 			this->yer += this->month / 13;
-			this->month /= 13;
-			this->day /= 30;
+			this->month %= 13;
 		}
-		else if (this->month == (1||3||5||7||8||10||12))
+		else if (this->month == 1,3,5,7,8,10,12)
 		{
 			this->day = +other.day;
 			this->month += this->day / 32;
+			this->day %= 32;
 			this->yer += this->month / 13;
-			this->month /= 13;
-			this->day /= 30;
+			this->month %= 13;
 		}
 		else
 		{
 			this->day = +other.day;
+			this->day %= 31;
 			this->month += this->day / 31;
 			this->yer += this->month / 13;
-			this->month /= 13;
-			this->day /= 30;
+			this->month %= 13;
 		}
+		return *this;
+	}
+
+	Date & operator - (const Date & other)
+	{
+		if ((this->month == 2) && (this->yer % 400 == 0) && (this->yer % 4 == 0))
+		{
+			this->day += other.day;
+			this->month += this->day / 30;
+			this->day %= 30;
+			this->yer += this->month / 13;
+			this->month %= 13;
+		}
+		else if ((this->month == 2))
+		{
+			this->day +=other.day;
+			this->month += this->day / 29;
+			this->day %= 29;
+			this->yer += this->month / 13;
+			this->month %= 13;
+		}
+		else if (this->month == 1, 3, 5, 7, 8, 10, 12)
+		{
+			this->day +=other.day;
+			this->month += this->day / 32;
+			this->day %= 32;
+			this->yer += this->month / 13;
+			this->month %= 13;
+		}
+		else
+		{
+			this->day = +other.day;
+			this->day %= 31;
+			this->month += this->day / 31;
+			this->yer += this->month / 13;
+			this->month %= 13;
+		}
+		return *this;
 	}
 
 	bool operator == (const Date & other)
@@ -198,11 +235,11 @@ private:
 
 int main()
 {
-	Date a, b("31.03.2019");
-
+	Date a;
+	Date b("31.03.2019");
+	 
 	Date c = a + b;
-
-	c.print;
+	c.print();
 
 	return 0;
 }
