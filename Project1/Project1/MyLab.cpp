@@ -26,9 +26,9 @@ private:
 public:
 
 	Date()
-	{
-		month = 03;
+	{	
 		day = 30;
+		month = 03;
 		yer = 2019;
 	}
 
@@ -93,16 +93,40 @@ public:
 		return *this;
 	}
 
-	Date operator + (const Date & other)
+	Date & operator + (const Date & other)
 	{
-		Date temp;
-		if (this->month % 2 == 1)
+
+		if ((this->month == 2) && (this->yer % 400 == 0) && (this->yer % 4 == 0))
 		{
-			temp.day = (this->day + other.day) % 31;
+			this->day = +other.day;
+			this->month += this->day / 30;
+			this->yer += this->month / 13;
+			this->month /= 13;
+			this->day /= 30;
+		}
+		else if ((this->month == 2))
+		{
+			this->day = +other.day;
+			this->month += this->day / 29;
+			this->yer += this->month / 13;
+			this->month /= 13;
+			this->day /= 30;
+		}
+		else if (this->month == (1||3||5||7||8||10||12))
+		{
+			this->day = +other.day;
+			this->month += this->day / 32;
+			this->yer += this->month / 13;
+			this->month /= 13;
+			this->day /= 30;
 		}
 		else
 		{
-
+			this->day = +other.day;
+			this->month += this->day / 31;
+			this->yer += this->month / 13;
+			this->month /= 13;
+			this->day /= 30;
 		}
 	}
 
@@ -116,51 +140,69 @@ public:
 		return !(this->day == other.day && this->month == other.month && this->yer == other.yer);
 	}
 
-	//bool operator > (const Date & other)
-	//{
-	//	this->yer > other.yer ?  true:
-	//}
-
-	//bool operator > (const Date & other)
-	//{
-	//	if (this->yer > other.yer)
-	//	{
-	//		return true;
-	//	}
-	//	if (this->month > other.yer)
-	//	{
-	//		return true;
-	//	}
-	//	if (this->day > other.day)
-	//	{
-	//		return true;
-	//	}
-	//	return false;
-	//}
 	bool operator  > (const Date & other)
 	{
-		return this->yer > other.yer ? 1 : (this->month > other.yer ? 1 : (this->day > other.day ? 1 : 0));
+		return this->yer > other.yer ? 0 : (this->month > other.month ? 0 : (this->day > other.day ? 0 : 1));
 	}
-	//bool operator  < (const Date & other)
-	//{
-	//	this->yer > other.yer ? return !1 : !(this->month > other.yer ? return 1 : (this->day > other.day ? return 1 : 0))
-	//}
-	//bool operator  >= (const  Date & other)
-	//{
-	//	this->yer >= other.yer ? return 1 : (this->month >= other.yer ? return 1 : (this->day >= other.day ? return 1 : 0))
-	//}
-	//bool operator  <= (const Date & other)
-	//{
-	//	this->yer <= other.yer ? return 1 : (this->month <= other.yer ? return 1 : (this->day <= other.day ? return 1 : 0))
-	//}
+
+	bool operator  < (const Date & other)
+	{
+		return this->yer < other.yer ? 0 : (this->month < other.month ? 0 : (this->day < other.day ? 0 : 1));
+	}
+
+	bool operator  >= (const Date & other)
+	{
+		return this->yer >= other.yer ? 0 : (this->month >= other.month ? 0 : (this->day >= other.day ? 0 : 1));
+	}
+
+	bool operator  <= (const Date & other)
+	{
+		return this->yer <= other.yer ? 0 : (this->month <= other.month ? 0 : (this->day <= other.day ? 0 : 1));
+	}
+
+};
+class Way 
+{
+private:
+
+	int wayNum;
+	char city[100];
+
+public:
+	Way()
+	{
+		wayNum = 0;
+	}
+
+	int getWayNum()
+	{
+		return wayNum;
+	}
+	
+	int setWay(int wayNum)
+	{
+		this->wayNum = wayNum;
+	}
+};
+class Train
+{
+public:
+	Train()
+	{
+
+	}
+private:
+
 };
 
 
 int main()
 {
-	Date a("03.12.2019");
-	Date b("02.12.2019");
-	bool c = a > b;
-	cout << c;
+	Date a, b("31.03.2019");
+
+	Date c = a + b;
+
+	c.print;
+
 	return 0;
 }

@@ -20,7 +20,13 @@ void var9();
 
 int main()
 {
-	var9();
+	double arr[3] = {12,31,1};
+	sortArray(arr, 3);
+	for (int counter = 0; counter < 3; counter++)
+	{
+		cout << arr[counter];
+		cout << endl;
+	}
 }
 
 double sumStirng(char myString[])
