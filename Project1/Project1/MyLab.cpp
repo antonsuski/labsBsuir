@@ -244,7 +244,6 @@ public:
 		cout << endl;
 	}
 };
-
 class List
 {
 	friend class Date;
