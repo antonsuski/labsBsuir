@@ -130,42 +130,42 @@ public:
 		return *this;
 	}
 
-	Date & operator - (const Date & other)
-	{
-		if ((this->month == 2) && (this->yer % 400 == 0) && (this->yer % 4 == 0))
-		{
-			this->day += other.day;
-			this->month += this->day / 30;
-			this->day %= 30;
-			this->yer += this->month / 13;
-			this->month %= 13;
-		}
-		else if ((this->month == 2))
-		{
-			this->day +=other.day;
-			this->month += this->day / 29;
-			this->day %= 29;
-			this->yer += this->month / 13;
-			this->month %= 13;
-		}
-		else if (this->month == 1, 3, 5, 7, 8, 10, 12)
-		{
-			this->day +=other.day;
-			this->month += this->day / 32;
-			this->day %= 32;
-			this->yer += this->month / 13;
-			this->month %= 13;
-		}
-		else
-		{
-			this->day = +other.day;
-			this->day %= 31;
-			this->month += this->day / 31;
-			this->yer += this->month / 13;
-			this->month %= 13;
-		}
-		return *this;
-	}
+	//Date & operator - (const Date & other)
+	//{
+	//	if ((this->month == 2) && (this->yer % 400 == 0) && (this->yer % 4 == 0))
+	//	{
+	//		this->day += other.day;
+	//		this->month += this->day / 30;
+	//		this->day %= 30;
+	//		this->yer += this->month / 13;
+	//		this->month %= 13;
+	//	}
+	//	else if ((this->month == 2))
+	//	{
+	//		this->day +=other.day;
+	//		this->month += this->day / 29;
+	//		this->day %= 29;
+	//		this->yer += this->month / 13;
+	//		this->month %= 13;
+	//	}
+	//	else if (this->month == 1, 3, 5, 7, 8, 10, 12)
+	//	{
+	//		this->day +=other.day;
+	//		this->month += this->day / 32;
+	//		this->day %= 32;
+	//		this->yer += this->month / 13;
+	//		this->month %= 13;
+	//	}
+	//	else
+	//	{
+	//		this->day = +other.day;
+	//		this->day %= 31;
+	//		this->month += this->day / 31;
+	//		this->yer += this->month / 13;
+	//		this->month %= 13;
+	//	}
+	//	return *this;
+	//}
 
 	bool operator == (const Date & other)
 	{
@@ -196,19 +196,26 @@ public:
 	{
 		return this->yer <= other.yer ? 0 : (this->month <= other.month ? 0 : (this->day <= other.day ? 0 : 1));
 	}
-
 };
 class Way 
 {
 private:
 
 	int wayNum;
-	char city[100];
+	string city;
 
 public:
+
 	Way()
 	{
 		wayNum = 0;
+		city = "city";
+	}
+
+	Way(int wayNum,string city)
+	{
+		this->wayNum = wayNum;
+		this->city = city;
 	}
 
 	int getWayNum()
@@ -216,30 +223,72 @@ public:
 		return wayNum;
 	}
 	
-	int setWay(int wayNum)
+	string getCity()
+	{
+		return city;
+	}
+
+	void setWayNum(int wayNum)
 	{
 		this->wayNum = wayNum;
 	}
-};
-class Train
-{
-public:
-	Train()
-	{
 
+	void setCity(string city)
+	{
+		this->city = city;
 	}
+
+	void print()
+	{
+		cout << endl << "way number is: " << wayNum << "\ncity is " << city;
+		cout << endl;
+	}
+};
+
+class List
+{
+	friend class Date;
+	friend class Way;
+
 private:
 
-};
+	int freeSeats;
+	Way trainWay;
+	Date deparrtureDate;
 
+public:
+
+	List()
+	{
+		int freeSeats = 0;
+		Way trainWay();
+		Date deparrtureDate();
+	}
+		
+	int getCounterFreeTicket()
+	{
+		return freeSeats;
+	}
+
+	Way getTrainWay()
+	{
+		return trainWay;
+	}
+
+	Date getArrive()
+	{
+		return deparrtureDate;
+	}
+
+	void print()
+	{
+		cout << "number of free seats :" << freeSeats;
+		trainWay.print();
+		deparrtureDate.print();
+	}
+};
 
 int main()
 {
-	Date a;
-	Date b("31.03.2019");
-	 
-	Date c = a + b;
-	c.print();
-
 	return 0;
 }
