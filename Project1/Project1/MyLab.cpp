@@ -8,28 +8,91 @@ public:
 
 	Time()
 	{
-		houer = 00;
+		hour = 00;
 		second = 00;
 	}
 
 	Time (const char time[6])
 	{
-		if ((int)time[0] - 48 > 6 || (int)time[3] - 48 > 1 || strlen(time) > 5)
+		if ((int)time[0] - 48 > 2 || (int)time[3] - 48 > 5 || strlen(time) > 5)
 		{
 			cout << "Uncorrect time\n";
 		}
 		second = ((int)time[3] - 48) * 10 + ((int)time[4] - 48);
-		houer = (((int)time[0] - 48) * 10) + ((int)time[1] - 48);
+		hour = (((int)time[0] - 48) * 10) + ((int)time[1] - 48);
 	}
 
 	Time (const Time & other)
 	{
-		this->houer = other.houer;
+		this->hour = other.hour;
 		this->second = other.second;
 	}
 
+	int getHouer()
+	{
+		return hour;
+	}
+
+	int getSecond()
+	{
+		return second;
+	}
+
+	bool operator == (const Time& other)
+	{
+		return this->hour == other.hour && this->second == other.second ? 1 : 0;
+	}
+
+	bool operator != (const Time& other)
+	{
+		return this->hour != other.hour && this->second != other.second ? 1 : 0;
+	}
+
+	bool operator < (const Time& other)
+	{
+		return this->hour < other.hour ? 1 : (this->second < other.second ? 1 : 0);
+	}
+
+	bool operator > (const Time& other)
+	{
+		return this->hour > other.hour ? 1 : (this->second > other.second ? 1 : 0);
+	}
+
+	bool operator <= (const Time& other)
+	{
+		return this->hour <= other.hour ? 1 : (this->second <= other.second ? 1 : 0);
+	}
+
+	bool operator >= (const Time& other)
+	{
+		return this->hour >= other.hour ? 1 : (this->second >= other.second ? 1 : 0);
+	}
+
+	void setStandartTime()
+	{
+		hour = 00;
+		second = 00;
+	}
+
+	void copyTime(const Time & other)
+	{
+		this->hour = other.hour;
+		this->second = other.second;
+	}
+
+	void setTime(const char time[6])
+	{
+		if ((int)time[0] - 48 > 2 || (int)time[3] - 48 > 5 || strlen(time) > 5)
+		{
+			cout << "Uncorrect time\n";
+		}
+		second = ((int)time[3] - 48) * 10 + ((int)time[4] - 48);
+		hour = (((int)time[0] - 48) * 10) + ((int)time[1] - 48);
+	}
+
 private:
-	int houer, second;
+
+	int hour, second;
 };
 
 class Date
@@ -37,6 +100,7 @@ class Date
 private:
 
 	int yer, month, day;
+	Time time;
 
 	void setYer(int yer)
 	{
@@ -60,6 +124,7 @@ public:
 		day = 31;
 		month = 03;
 		yer = 2019;
+		time.setStandartTime();
 	}
 
 	Date(const char date[11])
@@ -71,6 +136,20 @@ public:
 		month = ((int)date[3] - 48) * 10 + ((int)date[1] - 48);
 		day = (((int)date[0] - 48) * 10) + ((int)date[4] - 48);
 		yer = (((int)date[6] - 48)*1000) + (((int)date[7] - 48)*100) + (((int)date[8] - 48)*10) + ((int)date[9] - 48);
+		time.setStandartTime();
+	}
+
+	Date(const char date[11], const char time[6])
+	{
+		if ((int)date[0] - 48 > 3 || (int)date[3] - 48 > 1 || strlen(date) > 10)
+		{
+			cout << "Uncorrect date\n";
+		}
+		month = ((int)date[3] - 48) * 10 + ((int)date[1] - 48);
+		day = (((int)date[0] - 48) * 10) + ((int)date[4] - 48);
+		yer = (((int)date[6] - 48) * 1000) + (((int)date[7] - 48) * 100) + (((int)date[8] - 48) * 10) + ((int)date[9] - 48);
+
+		this->time.setTime(time);
 	}
 
 	Date(const Date &other)
@@ -78,6 +157,14 @@ public:
 		this->yer = other.yer;
 		this->month = other.month;
 		this->day = other.day;
+	}
+
+	Date(const Date& other, const Time & time)
+	{
+		this->yer = other.yer;
+		this->month = other.month;
+		this->day = other.day;
+		this->time.copyTime(time);
 	}
 
 	int getYer()
@@ -199,32 +286,32 @@ public:
 
 	bool operator == (const Date & other)
 	{
-		return this->day == other.day && this->month == other.month && this->yer == other.yer;
+		return this->day == other.day && this->month == other.month && this->yer == other.yer && this->time == other.time;
 	}
 
 	bool operator != (const Date & other)
 	{
-		return !(this->day == other.day && this->month == other.month && this->yer == other.yer);
+		return !(this->day == other.day && this->month == other.month && this->yer == other.yer && this->time == other.time);
 	}
 
 	bool operator  > (const Date & other)
 	{
-		return this->yer > other.yer ? 0 : (this->month > other.month ? 0 : (this->day > other.day ? 0 : 1));
+		return this->yer > other.yer ? 0 : (this->month > other.month ? 0 : (this->day > other.day ? 0 : (this->time > other.time)));
 	}
 
 	bool operator  < (const Date & other)
 	{
-		return this->yer < other.yer ? 0 : (this->month < other.month ? 0 : (this->day < other.day ? 0 : 1));
+		return this->yer < other.yer ? 0 : (this->month < other.month ? 0 : (this->day < other.day ? 0 : (this->time < other.time)));
 	}
 
 	bool operator  >= (const Date & other)
 	{
-		return this->yer >= other.yer ? 0 : (this->month >= other.month ? 0 : (this->day >= other.day ? 0 : 1));
+		return this->yer >= other.yer ? 0 : (this->month >= other.month ? 0 : (this->day >= other.day ? 0 : (this->time >= other.time)));
 	}
 
 	bool operator  <= (const Date & other)
 	{
-		return this->yer <= other.yer ? 0 : (this->month <= other.month ? 0 : (this->day <= other.day ? 0 : 1));
+		return this->yer <= other.yer ? 0 : (this->month <= other.month ? 0 : (this->day <= other.day ? 0 : (this->time <= other.time)));
 	}
 
 	friend class Time;
@@ -328,5 +415,5 @@ public:
 
 int main()
 {
-
+	
 }
