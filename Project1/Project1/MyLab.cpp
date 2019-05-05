@@ -405,11 +405,47 @@ public:
 		trainWay.print();
 		deparrtureDate.print();
 	}
+
 	bool operator == (List& other)
 	{
 		return this->trainWay.getWayNum() == other.trainWay.getWayNum() ? 0
 			: (this->freeSeats == other.freeSeats? 0 
 				:(this->deparrtureDate == other.deparrtureDate));
+	}
+
+	bool operator != (List& other)
+	{
+		return !(this->trainWay.getWayNum() == other.trainWay.getWayNum() ? 0
+			: (this->freeSeats == other.freeSeats ? 0
+				: (this->deparrtureDate == other.deparrtureDate)));
+	}
+
+	bool operator < (List& other)
+	{
+		return this->trainWay.getWayNum() < other.trainWay.getWayNum() ? 0
+			: (this->freeSeats < other.freeSeats ? 0
+				: (this->deparrtureDate < other.deparrtureDate));
+	}
+
+	bool operator < (List& other)
+	{
+		return !(this->trainWay.getWayNum() < other.trainWay.getWayNum() ? 0
+			: (this->freeSeats < other.freeSeats ? 0
+				: (this->deparrtureDate < other.deparrtureDate)));
+	}
+
+	bool operator <= (List& other)
+	{
+		return this->trainWay.getWayNum() <= other.trainWay.getWayNum() ? 0
+			: (this->freeSeats <= other.freeSeats ? 0
+				: (this->deparrtureDate <= other.deparrtureDate));
+	}
+
+	bool operator >= (List& other)
+	{
+		return !(this->trainWay.getWayNum() <= other.trainWay.getWayNum() ? 0
+			: (this->freeSeats <= other.freeSeats ? 0
+				: (this->deparrtureDate <= other.deparrtureDate)));
 	}
 };
 
