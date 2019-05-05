@@ -2,6 +2,36 @@
 
 using namespace std;
 
+class Time
+{
+public:
+
+	Time()
+	{
+		houer = 00;
+		second = 00;
+	}
+
+	Time (const char time[6])
+	{
+		if ((int)time[0] - 48 > 6 || (int)time[3] - 48 > 1 || strlen(time) > 5)
+		{
+			cout << "Uncorrect time\n";
+		}
+		second = ((int)time[3] - 48) * 10 + ((int)time[4] - 48);
+		houer = (((int)time[0] - 48) * 10) + ((int)time[1] - 48);
+	}
+
+	Time (const Time & other)
+	{
+		this->houer = other.houer;
+		this->second = other.second;
+	}
+
+private:
+	int houer, second;
+};
+
 class Date
 {
 private:
@@ -196,6 +226,8 @@ public:
 	{
 		return this->yer <= other.yer ? 0 : (this->month <= other.month ? 0 : (this->day <= other.day ? 0 : 1));
 	}
+
+	friend class Time;
 };
 class Way 
 {
@@ -243,6 +275,7 @@ public:
 		cout << endl << "way number is: " << wayNum << "\ncity is " << city;
 		cout << endl;
 	}
+
 };
 class List
 {
@@ -285,9 +318,15 @@ public:
 		trainWay.print();
 		deparrtureDate.print();
 	}
+	bool operator == (List& other)
+	{
+		return this->trainWay.getWayNum() == other.trainWay.getWayNum() ? 0
+			: (this->freeSeats == other.freeSeats? 0 
+				:(this->deparrtureDate == other.deparrtureDate));
+	}
 };
 
 int main()
 {
-	return 0;
+
 }
