@@ -373,7 +373,7 @@ private:
 
 	int freeSeats;
 	Way trainWay;
-	Date deparrtureDate;
+	Date departureDate;
 
 public:
 
@@ -381,10 +381,10 @@ public:
 	{
 		int freeSeats = 0;
 		Way trainWay();
-		Date deparrtureDate();
+		Date departureDate();
 	}
 		
-	int getCounterFreeTicket()
+	int getFreeSeats()
 	{
 		return freeSeats;
 	}
@@ -394,58 +394,58 @@ public:
 		return trainWay;
 	}
 
-	Date getArrive()
+	Date getDepartureDate()
 	{
-		return deparrtureDate;
+		return departureDate;
 	}
 
 	void print()
 	{
 		cout << "number of free seats :" << freeSeats;
 		trainWay.print();
-		deparrtureDate.print();
+		departureDate.print();
 	}
 
 	bool operator == (List& other)
 	{
 		return this->trainWay.getWayNum() == other.trainWay.getWayNum() ? 0
 			: (this->freeSeats == other.freeSeats? 0 
-				:(this->deparrtureDate == other.deparrtureDate));
+				:(this->departureDate == other.departureDate));
 	}
 
 	bool operator != (List& other)
 	{
 		return !(this->trainWay.getWayNum() == other.trainWay.getWayNum() ? 0
 			: (this->freeSeats == other.freeSeats ? 0
-				: (this->deparrtureDate == other.deparrtureDate)));
+				: (this->departureDate == other.departureDate)));
 	}
 
 	bool operator < (List& other)
 	{
 		return this->trainWay.getWayNum() < other.trainWay.getWayNum() ? 0
 			: (this->freeSeats < other.freeSeats ? 0
-				: (this->deparrtureDate < other.deparrtureDate));
+				: (this->departureDate < other.departureDate));
 	}
 
 	bool operator < (List& other)
 	{
 		return !(this->trainWay.getWayNum() < other.trainWay.getWayNum() ? 0
 			: (this->freeSeats < other.freeSeats ? 0
-				: (this->deparrtureDate < other.deparrtureDate)));
+				: (this->departureDate < other.departureDate)));
 	}
 
 	bool operator <= (List& other)
 	{
 		return this->trainWay.getWayNum() <= other.trainWay.getWayNum() ? 0
 			: (this->freeSeats <= other.freeSeats ? 0
-				: (this->deparrtureDate <= other.deparrtureDate));
+				: (this->departureDate <= other.departureDate));
 	}
 
 	bool operator >= (List& other)
 	{
 		return !(this->trainWay.getWayNum() <= other.trainWay.getWayNum() ? 0
 			: (this->freeSeats <= other.freeSeats ? 0
-				: (this->deparrtureDate <= other.deparrtureDate)));
+				: (this->departureDate <= other.departureDate)));
 	}
 };
 
