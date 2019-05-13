@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string.h>
 
 using namespace std;
 
@@ -378,28 +377,28 @@ private:
 	Way trainWay;
 	Date departureDate;
 
-	void generatorID()
-	{
-		ID[0] = trainWay.getWayNum() / 10;
-		ID[1] = trainWay.getWayNum() % 10;
-		ID[2] = ':';
-		ID[3] = freeSeats / 10;
-		ID[4] = freeSeats % 10;
-		ID[5] ='.';
-		ID[6] = departureDate.getDay() / 10;
-		ID[7] = departureDate.getDay() % 10;
-		ID[8] ='.';
-		ID[9] = IDCounter++;
-	}
+	//void generatorID()
+	//{
+	//	ID[0] = trainWay.getWayNum() / 10;
+	//	ID[1] = trainWay.getWayNum() % 10;
+	//	ID[2] = ':';
+	//	ID[3] = freeSeats / 10;
+	//	ID[4] = freeSeats % 10;
+	//	ID[5] ='.';
+	//	ID[6] = departureDate.getDay() / 10;
+	//	ID[7] = departureDate.getDay() % 10;
+	//	ID[8] ='.';
+	//	ID[9] = IDCounter++;
+	//}
 
 public:
 
 	List()
 	{
 		int freeSeats = 0;
-		Way trainWay();
-		Date departureDate();
-		generatorID();
+		Way trainWay;
+		Date departureDate;
+		//generatorID();
 	}
 		
 	int getFreeSeats()
@@ -481,6 +480,6 @@ int List::IDCounter = 0;
 
 int main()
 {
-	List a;
-	a.printID;
+	//List a;
+	//a.printID();
 }
