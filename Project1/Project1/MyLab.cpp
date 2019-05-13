@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string.h>
 
 using namespace std;
 
@@ -368,12 +369,28 @@ class List
 {
 	friend class Date;
 	friend class Way;
+	static string ID;
+	static int IDCounter;
 
 private:
 
 	int freeSeats;
 	Way trainWay;
 	Date departureDate;
+
+	void generatorID()
+	{
+		ID[0] = trainWay.getWayNum() / 10;
+		ID[1] = trainWay.getWayNum() % 10;
+		ID[2] = ':';
+		ID[3] = freeSeats / 10;
+		ID[4] = freeSeats % 10;
+		ID[5] ='.';
+		ID[6] = departureDate.getDay() / 10;
+		ID[7] = departureDate.getDay() % 10;
+		ID[8] ='.';
+		ID[9] = IDCounter++;
+	}
 
 public:
 
@@ -394,6 +411,11 @@ public:
 		return trainWay;
 	}
 
+	string getID()
+	{
+		return ID;
+	}
+
 	Date getDepartureDate()
 	{
 		return departureDate;
@@ -404,6 +426,11 @@ public:
 		cout << "number of free seats :" << freeSeats;
 		trainWay.print();
 		departureDate.print();
+	}
+
+	void printID()
+	{
+		cout << ID;
 	}
 
 	bool operator == (List& other)
@@ -448,6 +475,8 @@ public:
 				: (this->departureDate <= other.departureDate)));
 	}
 };
+
+int List::IDCounter = 0;
 
 int main()
 {
