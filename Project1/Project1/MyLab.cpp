@@ -124,7 +124,6 @@ public:
 		day = 31;
 		month = 03;
 		yer = 2019;
-		time.setStandartTime();
 	}
 
 	Date(const char date[11])
@@ -375,29 +374,28 @@ private:
 	int freeSeats;
 	Way trainWay;
 	Date departureDate;
-	string ID;
+	char ID[11];
 
 	void generatorID()
 	{
-		ID[0] = trainWay.getWayNum() / 10;
-		ID[1] = trainWay.getWayNum() % 10;
+		ID[0] = (trainWay.getWayNum() / 10) + 48;
+		ID[1] = (trainWay.getWayNum() % 10) + 48;
 		ID[2] = ':';
-		ID[3] = freeSeats / 10;
-		ID[4] = freeSeats % 10;
+		ID[3] = (getFreeSeats() / 10) + 48;
+		ID[4] = (getFreeSeats() % 10) + 48;
 		ID[5] ='.';
-		ID[6] = departureDate.getDay() / 10;
-		ID[7] = departureDate.getDay() % 10;
+		ID[6] = (departureDate.getDay() / 10) + 48;
+		ID[7] = (departureDate.getDay() % 10) + 48;
 		ID[8] ='.';
-		ID[9] = IDCounter++;
+		ID[9] = IDCounter++ + 48;
+		ID[10] = '\0';
 	}
 
 public:
 
 	List()
 	{
-		int freeSeats = 0;
-		Way trainWay;
-		Date departureDate;
+		freeSeats = 0;
 		generatorID();
 	}
 		
@@ -430,7 +428,12 @@ public:
 
 	void printID()
 	{
-	 	cout << ID;
+		cout << "ID: ";
+		for (int counter = 0; counter < strlen(ID); counter++)
+		{
+			cout << ID[counter];
+		}
+		cout << endl;
 	}
 
 	bool operator == (List& other)
@@ -480,6 +483,7 @@ int List::IDCounter = 0;
 
 int main()
 {
-	List a;
+	List a, b;
 	a.printID();
+	b.printID();
 }
