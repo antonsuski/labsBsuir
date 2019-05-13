@@ -399,6 +399,7 @@ public:
 		int freeSeats = 0;
 		Way trainWay();
 		Date departureDate();
+		generatorID();
 	}
 		
 	int getFreeSeats()
@@ -480,5 +481,6 @@ int List::IDCounter = 0;
 
 int main()
 {
-	
+	List a;
+	a.printID;
 }
