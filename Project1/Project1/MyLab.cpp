@@ -455,7 +455,7 @@ public:
 				: (this->departureDate < other.departureDate));
 	}
 
-	bool operator < (List& other)
+	bool operator > (List& other)
 	{
 		return !(this->trainWay.getWayNum() < other.trainWay.getWayNum() ? 0
 			: (this->freeSeats < other.freeSeats ? 0
