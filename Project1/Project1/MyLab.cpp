@@ -368,8 +368,8 @@ class List
 {
 	friend class Date;
 	friend class Way;
-	static string ID;
-	static int IDCounter;
+	// static string ID;
+	// static int IDCounter;
 
 private:
 
@@ -411,10 +411,10 @@ public:
 		return trainWay;
 	}
 
-	string getID()
-	{
-		return ID;
-	}
+	// string getID()
+	// {
+	// 	return ID;
+	// }
 
 	Date getDepartureDate()
 	{
@@ -428,10 +428,10 @@ public:
 		departureDate.print();
 	}
 
-	void printID()
-	{
-		cout << ID;
-	}
+	// void printID()
+	// {
+	// 	cout << ID;
+	// }
 
 	bool operator == (List& other)
 	{
@@ -476,7 +476,7 @@ public:
 	}
 };
 
-int List::IDCounter = 0;
+// int List::IDCounter = 0;
 
 int main()
 {
