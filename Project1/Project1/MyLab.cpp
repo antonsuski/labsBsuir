@@ -67,6 +67,13 @@ public:
 	{
 		return this->hour >= other.hour ? 1 : (this->second >= other.second ? 1 : 0);
 	}
+	
+	Time & operator = (const Time & other)
+	{
+		this->hour = other.hour;
+		this->second = other.second;
+		return *this;
+	}
 
 	void setStandartTime()
 	{
