@@ -252,7 +252,9 @@ public:
 		}
 		return *this;
 	}
-
+	
+	
+	// TRUBLS WITH COLCULATIONS
 	//Date & operator - (const Date & other)
 	//{
 	//	if ((this->month == 2) && (this->yer % 400 == 0) && (this->yer % 4 == 0))
